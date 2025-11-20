@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tip calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Tip Calculator</h1>
+        <label for="bill">Bill:</label>
+        <input type="number" id="bill" name="bill" required>
+        <br>
+        <label for="tip">Tip %</label>
+        <input type="number" id="tip" name="tip" required>
+        <br>
+        <button onclick="calculateTotal()">Calc tip</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const bill = document.getElementById('bill');
+        const tip = document.getElementById('tip');
+        const result = document.getElementById('result');
+
+        function calculateTotal() {
+            const userBill = Number(bill.value);
+            const userTip = Number(tip.value);
+            const tipAmount = (userBill * userTip) / 100;
+            const total = userBill + tipAmount;
+            result.textContent = `Total: $${total}`;
+        }
+    </script>
+</body>
+</html>
