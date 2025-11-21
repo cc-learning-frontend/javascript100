@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recipe Book API</title>
+    <style>
+        .category-item {
+            display: flex;
+            justify-content: start;
+            align-content: start;
+            gap: 1rem;
+        }
+        .category-item h2 {
+            min-width: 250px;
+        }
+    </style>
+</head>
+<body>
+<h1>Recipe book API</h1>
+<ul class="recipes-list">
+</ul>
+
+<script>
+    // Fetch the data from the FREE API
+    const recipesList = document.querySelector('.recipes-list');
+    fetch("https://themealdb.com/api/json/v1/1/categories.php")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Could not fetch resource !`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            data.categories.forEach(category => {
+                console.log(category);
+                // Each li is a category
+                const li = document.createElement('li')
+                li.classList.add('category-item')
+
+                // Each category has a title and description
+                const title = document.createElement('h2')
+                const description = document.createElement('p')
+
+                // Add the text content to each category
+                title.textContent = category.strCategory
+                description.textContent = category.strCategoryDescription
+
+                // Append the title and description to the li
+                li.appendChild(title)
+                li.appendChild(description)
+
+                // Append the li to the ul
+                recipesList.appendChild(li);
+            })
+        })
+        .catch(error => console.error('Error:', error))
+
+    // got introduced to working with APIs
+    // LEARNED
+    // - difference in getting the api URL between www. and https://
+    // - .json() method
+    // - .then() method
+    // - .catch() method
+    // - .forEach() method
+    // - .createElement() method
+    // - .appendChild() method
+    // - .classList.add() method
+</script>
+</body>
+</html>
