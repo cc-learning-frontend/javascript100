@@ -8,6 +8,22 @@
     <title>Age calculator</title>
 </head>
 <body>
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth">
+        <h2>Your age is: <span id="yearsOld">X</span> years old</h2>
+    </div>
+    <script>
+        const dateOfBirth = document.getElementById('dateOfBirth');
+        const yearsOld = document.getElementById('yearsOld');
+        function calculateAge() {
+            const today = new Date();
+            const birthDate = new Date(dateOfBirth.value);
+            yearsOld.innerText = String(today.getFullYear() - birthDate.getFullYear());
+        }
 
+        dateOfBirth.addEventListener('change', calculateAge);
+    </script>
 </body>
 </html>
