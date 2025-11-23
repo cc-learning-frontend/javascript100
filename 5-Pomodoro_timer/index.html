@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pomodoro Timer</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Pomodoro Timer</h1>
+        <div id="timer">00:00</div>
+        <button id="startButton">Start</button>
+        <button id="stopButton">Stop</button>
+        <button id="resetButton">Reset</button>
+    </div>
+
+    <script>
+        const start = document.getElementById('startButton');
+        const stop = document.getElementById('stopButton');
+        const reset = document.getElementById('resetButton');
+        let timer = document.getElementById('timer');
+
+        function startTimer() {
+            let totalTime = 25 * 60; // total seconds
+            totalTime--;
+        }
+        console.log(totalTime);
+
+        setInterval(startTimer, 1000);
+
+        start.addEventListener('click', () => setInterval)
+    </script>
+</body>
+</html>
