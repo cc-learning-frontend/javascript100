@@ -11,59 +11,90 @@
             display: flex;
             gap: 2rem;
         }
-        .sub-menu {
+        .second-menu, .third-menu {
             display: none;
             background-color: lightgray;
+        }
+        .second-menu {
+            width: 200px;
+        }
+        ul {
+            list-style: none;
+        }
+        .last-menu ul {
+            display: flex;
+            flex-direction: column;
+        }
+        /* Display menu to the right */
+        .third-menu {
+            position: relative;
+            left: 100%;
+            top: 0;
         }
     </style>
 </head>
 <body>
     <h1>Selector menu</h1>
     <nav>
-        <!-- Menu items -->
-        <ul>
-            <!-- Menu item -->
-            <li class="menu-item">
-                <h2>Sub-category</h2>
-                <ul class="sub-menu">
-                    <li>Sub-sub-category</li>
-                    <li>Sub-sub-category</li>
-                    <li>Sub-sub-category</li>
-                </ul>
-            </li>
-            <!-- Menu item -->
-            <li class="menu-item">
-                <h2>Sub-category</h2>
-                <ul class="sub-menu">
-                    <li>Sub-sub-category</li>
-                    <li>Sub-sub-category</li>
-                    <li>Sub-sub-category</li>
-                </ul>
-            </li>
-            <!-- Menu item -->
-            <li class="menu-item">
-                <h2>Sub-category</h2>
-                <ul class="sub-menu">
-                    <li>Sub-sub-category</li>
-                    <li>Sub-sub-category</li>
-                    <li>Sub-sub-category</li>
+        <!-- 1st Menu -->
+        <ul class="first-menu">
+            <!-- 1st Menu item -->
+            <li class="first-menu-item">
+                <!-- 1st Menu item (name) -->
+                <h2 class="first-menu-item-name">1st-category</h2>
+                <!-- 2nd Menu -->
+                <ul class="second-menu">
+                    <!-- 2nd Menu item -->
+                    <li class="second-menu-item">
+                        <!-- 2nd Menu item (name) -->
+                        <h3 class="second-menu-item-name">2nd-category</h3>
+                        <!-- 3rd Menu -->
+                        <div class="third-menu">
+                            <!-- 3rd Menu item -->
+                            <h4 class="third-menu-item">3rd-category</h4>
+                            <!-- 4th Menu -->
+                            <ul class="fourth-menu">
+                                <!-- 4th Menu item -->
+                                <li class="fourth-menu-item">4th-category</li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </li>
         </ul>
     </nav>
 
     <script>
-        items = document.querySelectorAll('.menu-item');
+        // Initial dropdown menu (down)
+        items = document.querySelectorAll('.first-menu-item');
         items.forEach(
             item => {
                 item.addEventListener('mouseover', () => {
-                    item.querySelector('.sub-menu').style.display = 'block';
+                    item.querySelector('.second-menu').style.display = 'block';
                 })
                 item.addEventListener('mouseout', () => {
-                    item.querySelector('.sub-menu').style.display = 'none';
+                    item.querySelector('.second-menu').style.display = 'none';
+                })
+            }
+        )
+        // Second dropdown menu (to the right side)
+        subMenuItems = document.querySelectorAll('.second-menu-item-name');
+        subMenuItems.forEach(
+            item => {
+                item.addEventListener('mouseover', () => {
+                    item.nextElementSibling.style.display = 'block';
+                })
+                item.addEventListener('mouseout', () => {
+                    item.nextElementSibling.style.display = 'none';
                 })
             }
         )
     </script>
+
+    <!--
+     Learned about :
+     - sibling selector
+     - event listener on hover
+     -->
 </body>
 </html>
